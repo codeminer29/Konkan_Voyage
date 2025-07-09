@@ -1,30 +1,150 @@
-# Getting Started
+# 🌴 कोंकण VOYAGE – Travel Booking System
 
-### Reference Documentation
-For further reference, please consider the following sections:
+Welcome to **Konkan Voyage**, a full-stack web application designed for booking coastal travel packages across the Konkan region. This system allows customers to book trips, view printable tickets, and gives administrators full control to manage bookings, cancellations, and exports.
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/3.5.3/maven-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.5.3/maven-plugin/build-image.html)
-* [Spring Web](https://docs.spring.io/spring-boot/3.5.3/reference/web/servlet.html)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/3.5.3/reference/data/sql.html#data.sql.jpa-and-spring-data)
-* [Thymeleaf](https://docs.spring.io/spring-boot/3.5.3/reference/web/servlet.html#web.servlet.spring-mvc.template-engines)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/3.5.3/reference/using/devtools.html)
+---
 
-### Guides
-The following guides illustrate how to use some features concretely:
+## 🚀 Features
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
-* [Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
+### 👤 User (Passenger)
 
-### Maven Parent overrides
+- Book destination packages via a form
+- Auto-fill destination and price from package cards
+- Get a **printable confirmation ticket**
+- Booking status (Confirmed / Cancelled)
 
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
+### 🛠 Admin
 
+- Admin login with Spring Security
+- View all bookings with table view
+- Cancel or permanently delete any booking
+- Export all bookings to **Excel file (.xlsx)**
+
+---
+
+## 🧰 Tech Stack
+
+| Layer       | Tech Used                       |
+| ----------- | ------------------------------- |
+| Frontend    | HTML, CSS, Bootstrap, Thymeleaf |
+| Backend     | Java, Spring Boot, Spring MVC   |
+| Security    | Spring Security (Admin login)   |
+| Database    | MySQL / H2 (JPA Repository)     |
+| Export      | Apache POI (Excel Export)       |
+| View Engine | Thymeleaf Templates             |
+
+---
+
+## 📁 Project Structure
+
+```
+src
+├── main
+│   ├── java
+│   │   └── com.konkanvoyage.konkanvoyage
+│   │       ├── controller
+│   │       │   ├── BookingController.java
+│   │       │   └── AdminController.java
+│   │       ├── model
+│   │       │   └── Booking.java
+│   │       ├── repository
+│   │       │   └── BookingRepository.java
+│   │       └── config
+│   │           └── SecurityConfig.java
+│   └── resources
+│       ├── templates
+│       │   ├── index.html
+│       │   ├── ticket.html
+│       │   ├── login.html
+│       │   └── admin-bookings.html
+│       ├── static
+│       │   ├── assets/
+│       │   └── style.css
+│       └── application.properties
+```
+
+---
+
+## 🔐 Admin Login
+
+> Admin login is secured using Spring Security.
+
+- **Username**: `admin`
+- **Password**: `admin123`
+
+You can change this in `SecurityConfig.java` under the `InMemoryUserDetailsManager` bean.
+
+---
+
+## 🪙 How to Run Locally
+
+1. **Clone the Repository**
+
+```bash
+git clone https://github.com/yourusername/konkan-voyage.git
+cd konkan-voyage
+```
+
+2. **Start MySQL** (or use H2)
+
+- Update your database config in `application.properties`
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/konkanvoyage
+spring.datasource.username=root
+spring.datasource.password=yourpassword
+spring.jpa.hibernate.ddl-auto=update
+```
+
+3. **Run the Application**
+
+```bash
+./mvnw spring-boot:run
+```
+
+4. **Visit in Browser**
+
+- Home Page: [http://localhost:8080](http://localhost:8080)
+- Admin Login: [http://localhost:8080/login](http://localhost:8080/login)
+
+---
+
+## 📸 Screenshots
+
+<details>
+<summary>🖼 Click to Expand</summary>
+
+- Homepage with Packages
+- Booking Form
+- Admin Dashboard
+- Printable Ticket View
+
+</details>
+
+---
+
+## 📄 Deployment (Optional)
+
+This app can be deployed using:
+
+- Render (Spring Boot backend)
+- Vercel / Netlify (static frontend - optional)
+- PlanetScale / Railway (MySQL cloud DB)
+
+Let me know if you want step-by-step deployment instructions.
+
+---
+
+## 📃 License
+
+This project is for educational and demonstration purposes only.
+
+---
+
+## 🙋‍♂️ Developed By
+
+**Soham Bamane**
+🧑‍💻 Java Full-Stack Developer
+📧 codeminer29@gmail.com
+🌐 LinkedIn: https://www.linkedin.com/in/soham-bamane-1637602a0/
+🌐 GitHub: https://github.com/codeminer29
