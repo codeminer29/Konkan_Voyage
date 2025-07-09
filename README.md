@@ -99,6 +99,7 @@ spring.jpa.hibernate.ddl-auto=update
 3. **Run the Application**
 
 ```bash
+./mvnw clean install
 ./mvnw spring-boot:run
 ```
 
